@@ -1,0 +1,138 @@
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 1;
+    color: #20292f;
+}
+a {
+    color: initial;
+    text-decoration: initial;
+}
+div {
+    display: inline-block;
+}
+.header {
+    user-select: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 5;
+    display: block;
+    background-color: white;
+    padding: 20px 40px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.3)!important;
+}
+.logo {
+    font-size: 23px;
+    font-weight: 600;
+}
+.top-menu {
+    float: right;
+    line-height: 1.5;
+    word-spacing: 15px;
+}
+.hamburger-menu-button {
+    display: none;
+    float: right;
+    line-height: 1;
+    font-weight: 800;
+    font-size: 24px;
+    cursor: pointer;
+}
+.menu-item {
+    transition: color 0.1s ease-in-out;
+}
+.menu-item:hover {
+    color: #71818c;
+}
+.selected {
+    font-weight: 600;
+}
+.main-content {
+    display: block;
+    margin-top: 80px;
+}
+.images-grid {
+    margin: 0px 50px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+.gallery-item {
+    margin: 20px;
+    cursor: pointer;
+}
+.item-img {
+    width: 250px;
+    height: 175px;
+    box-shadow: 5px 5px 10px rgba(0,0,0,0.5);
+}
+.item-title {
+    padding: 20px;
+    width: 250px;
+    display: block;
+    position: absolute;
+    color: white;
+    background-color: rgba(32, 41, 47, 0.5);
+    transform: translate(0px,-56px);
+    box-sizing: border-box;
+}
+.big-image {
+    position: fixed;
+    opacity: 0%;
+    max-width: 800px;
+    width: 80vw;
+    aspect-ratio: 10 / 7;
+    top: 50vh; 
+    left: 50%;
+    z-index: -1;
+    transform: translate(-50%, -50%);
+    box-shadow: 5px 5px 10px rgba(0,0,0,0.5);
+}
+.btn-close {
+    z-index: 1000;
+    position: absolute;
+}
+.backdrop {
+    position: fixed;
+    display: block;    
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;  
+    opacity: 0%;
+    transition: opacity 0.1s cubic-bezier(0.33, 1, 0.68, 1);
+    z-index: -1;
+    background-color: rgba(32, 41, 47, 0.7);
+    transform: scale(1);
+    cursor: pointer;
+}
+.side-menu {
+    position: fixed;
+    top:0;
+    bottom:0;
+    right: 0;
+    transform: translate(100%,0);
+    z-index: 1000;
+    transition: transform 0.3s cubic-bezier(0.33, 1, 0.68, 1);
+    padding: 40px;
+    background-color: white;
+}
+.side-menu a {
+    display: block;
+    margin-bottom: 30px;
+}
+@media screen and (max-width: 800px) {
+    .images-grid {
+        margin: 0px;
+    }
+    .top-menu {
+        display: none;
+    }
+    .hamburger-menu-button {
+        display: inline-block;
+    }
+}
