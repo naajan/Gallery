@@ -6,6 +6,9 @@ body {
     line-height: 1;
     color: #20292f;
 }
+html {
+    position: relative;
+}
 a {
     color: initial;
     text-decoration: initial;
@@ -17,6 +20,18 @@ div {
     user-select: none;
     position: fixed;
     top: 0;
+    left: 0;
+    right: 0;
+    z-index: 5;
+    display: block;
+    background-color: white;
+    padding: 20px 40px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.3)!important;
+}
+.footer {
+    user-select: none;
+    position: absolute;
+    top: calc(100% + 20px);
     left: 0;
     right: 0;
     z-index: 5;
@@ -80,21 +95,32 @@ div {
     transform: translate(0px,-56px);
     box-sizing: border-box;
 }
-.big-image {
+.overlay {
     position: fixed;
+    top: 50vh; 
+    left: 50%;
+    max-width: 800px;
+    width: 80vw;
+    z-index: -1;
+    aspect-ratio: 10 / 7;
+    transform: translate(-50%, -50%);
     opacity: 0%;
+    display: block;
+}
+.big-image {
     max-width: 800px;
     width: 80vw;
     aspect-ratio: 10 / 7;
-    top: 50vh; 
-    left: 50%;
-    z-index: -1;
-    transform: translate(-50%, -50%);
+    z-index: 100;
     box-shadow: 5px 5px 10px rgba(0,0,0,0.5);
+    user-select: none;
 }
-.btn-close {
-    z-index: 1000;
-    position: absolute;
+.overlay .btn-close {
+    position: fixed;
+    top:-10%;
+    left:50%;
+    z-index: 100;
+    transform: translate(-50%, -50%);
 }
 .backdrop {
     position: fixed;
@@ -108,22 +134,38 @@ div {
     z-index: -1;
     background-color: rgba(32, 41, 47, 0.7);
     transform: scale(1);
-    cursor: pointer;
 }
 .side-menu {
     position: fixed;
     top:0;
     bottom:0;
     right: 0;
+    width: 400px;
     transform: translate(100%,0);
     z-index: 1000;
     transition: transform 0.3s cubic-bezier(0.33, 1, 0.68, 1);
-    padding: 40px;
+    padding: 20px;
     background-color: white;
 }
-.side-menu a {
+.side-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+.side-nav {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+.side-nav a {
     display: block;
-    margin-bottom: 30px;
+    width: 50%;
+    line-height: 1.5;
+    padding: 8px 0px;
+}
+.side-title {
+    font-size: 20px;
+    line-height: 1.5;
 }
 @media screen and (max-width: 800px) {
     .images-grid {

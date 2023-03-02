@@ -1,24 +1,28 @@
-var bigImage
+var overlay
 var backdrop
 var hamburger
 var sideMenu
+let currentImage = 0
 
 window.addEventListener('DOMContentLoaded', (event) => {
-    bigImage = document.getElementsByClassName('big-image')[0]
+    overlay = document.getElementsByClassName('overlay')[0]
     backdrop = document.getElementsByClassName('backdrop')[0]
     hamburger = document.getElementsByClassName('hamburger-menu-button')[0]
     sideMenu = document.getElementsByClassName('side-menu')[0]
 
-    Array.from(document.getElementsByClassName('gallery-item')).forEach(item => {
+    Array.from(document.getElementsByClassName('gallery-item')).forEach((item,i) => {
         item.addEventListener('click', () =>{
-            showBigImage()
+            showOverlay()
             showBackdrop()
-            bigImage.src = item.getElementsByClassName("item-img")[0].src
+            showImage(i)
         })
-    });
-    backdrop.addEventListener('click', () => {
+    })
+    overlay.getElementsByClassName('btn-close')[0].addEventListener('click', () => {
         hideBackdrop()
-        hideBigImage()
+        hideOverlay()
+    })
+    sideMenu.getElementsByClassName('btn-close')[0].addEventListener('click', () => {
+        hideBackdrop()
         hideSideMenu()
     })
     hamburger.addEventListener('click', () => {
@@ -26,6 +30,11 @@ window.addEventListener('DOMContentLoaded', (event) => {
         showSideMenu()
     })
 })
+
+function showImage(num) {
+    overlay.getElementsByClassName("big-image")[0].src = document.getElementsByClassName('gallery-item')[num].getElementsByClassName('item-img')[0].src
+    currentImage=num
+}
 
 function showBackdrop() {
     backdrop.style.opacity = '100%'
@@ -39,14 +48,14 @@ function hideBackdrop() {
     }, 100)
 }
 
-function showBigImage() {
-    bigImage.style.opacity = '100%'
-    bigImage.style.zIndex = '100'
+function showOverlay() {
+    overlay.style.opacity = '100%'
+    overlay.style.zIndex = '100'
 }
 
-function hideBigImage() {
-    bigImage.style.opacity = '0%'
-    bigImage.style.zIndex = '-1'
+function hideOverlay() {
+    overlay.style.opacity = '0%'
+    overlay.style.zIndex = '-1'
 }
 
 function showSideMenu() {
